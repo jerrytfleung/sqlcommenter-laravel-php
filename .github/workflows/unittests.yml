@@ -19,7 +19,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer config --no-plugins allow-plugins.php-http/discovery false
-          composer install --no-scripts --no-progress --no-suggest --prefer-dist
+          composer install --no-interaction --prefer-dist
 
       - name: Run Testsuite        
         run: vendor/bin/phpunit tests/
