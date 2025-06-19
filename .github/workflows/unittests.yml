@@ -1,0 +1,24 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ "swo" ]
+  pull_request:
+    branches: [ "swo" ]
+
+jobs:
+  unittests:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install composer dependencies
+        run: |
+          composer install --no-scripts
+
+      - name: Run Testsuite        
+        run: vendor/bin/phpunit tests/
